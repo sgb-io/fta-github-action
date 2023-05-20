@@ -74,6 +74,7 @@ function diffOutput(baseOutput: string, prOutput: string): string {
     repo: github.context.repo.repo,
     body: `**FTA Results:**\n\n${diffTable}`,
   });
+  process.exit(0);
 })().catch((error) => {
   console.error("Failed to create comment", error);
   process.exit(1);
