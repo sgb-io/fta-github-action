@@ -4,6 +4,12 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+inputs:
+  base_sha:
+    required: true
+  pr_sha:
+    required: true
+
 jobs:
   fta-check:
     runs-on: ubuntu-latest
@@ -11,7 +17,7 @@ jobs:
       - name: Checkout base commit
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ inputs.base_sha }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
@@ -29,6 +35,8 @@ jobs:
 
       - name: Checkout PR commit
         uses: actions/checkout@v2
+        with:
+          ref: ref: ${{ inputs.pr_sha }}
 
       - name: Run fta-cli against the PR
         id: pr
