@@ -4,12 +4,14 @@ description: "Runs FTA and comments a diff of the analysis on a PR"
 
 inputs:
   base_sha:
+    description: "Sha of the base"
     required: true
   pr_sha:
+    description: "Sha of the PR"
     required: true
 
 runs:
-  using: node18
+  using: 'composite'
   steps:
     - name: Checkout base commit
       uses: actions/checkout@v2
@@ -22,22 +24,24 @@ runs:
         node-version: 18
 
     - name: Install dependencies
+      shell: bash
       run: |
         npm ci
         npm install -g ts-node
 
     - name: Run fta-cli against the base
-      id: base
+      shell: bash
       run: ts-node ./src/baseRun.ts
 
     - name: Checkout PR commit
       uses: actions/checkout@v2
       with:
-        ref: ref: ${{ inputs.pr_sha }}
+        ref: ${{ inputs.pr_sha }}
 
     - name: Run fta-cli against the PR
-      id: pr
+      shell: bash
       run: ts-node ./src/prRun.ts
 
     - name: Comment on the PR
+      shell: bash
       run: ts-node ./src/comment.ts
