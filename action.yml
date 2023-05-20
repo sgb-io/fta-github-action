@@ -26,8 +26,9 @@ runs:
     - name: Install dependencies
       shell: bash
       run: |
-        npm ci
+        npm install -g yarn
         npm install -g ts-node
+        yarn
 
     - name: Run fta-cli against the base
       shell: bash
