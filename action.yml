@@ -25,7 +25,7 @@ jobs:
 
       - name: Run fta-cli against the base
         id: base
-        run: ts-node ./scripts/baseRun.ts
+        run: ts-node ./src/baseRun.ts
 
       - name: Checkout PR commit
         uses: actions/checkout@v2
@@ -34,7 +34,7 @@ jobs:
 
       - name: Run fta-cli against the PR
         id: pr
-        run: ts-node ./scripts/prRun.ts
+        run: ts-node ./src/prRun.ts
 
       - name: Comment on the PR
-        run: ts-node ./scripts/comment.ts
+        run: ts-node ./src/comment.ts
