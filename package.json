@@ -1,0 +1,15 @@
+{
+  "name": "fta-github-action",
+  "version": "1.0.0",
+  "repository": "https://github.com/sgb-io/fta-github-action.git",
+  "author": "sgb-io <sam@sgb.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/github": "^5.1.1",
+    "cli-table3": "^0.6.3",
+    "fta-cli": "^0.1.9"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.1"
+  }
+}
