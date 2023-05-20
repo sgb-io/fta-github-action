@@ -1,8 +1,6 @@
 name: "fta-cli"
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+description: "Runs FTA and comments a diff of the analysis on a PR"
 
 inputs:
   base_sha:
@@ -10,37 +8,36 @@ inputs:
   pr_sha:
     required: true
 
-jobs:
-  fta-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout base commit
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ inputs.base_sha }}
+runs:
+  using: node18
+  steps:
+    - name: Checkout base commit
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ inputs.base_sha }}
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18
 
-      - name: Install dependencies
-        run: |
-          npm ci
-          npm install -g ts-node
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm install -g ts-node
 
-      - name: Run fta-cli against the base
-        id: base
-        run: ts-node ./src/baseRun.ts
+    - name: Run fta-cli against the base
+      id: base
+      run: ts-node ./src/baseRun.ts
 
-      - name: Checkout PR commit
-        uses: actions/checkout@v2
-        with:
-          ref: ref: ${{ inputs.pr_sha }}
+    - name: Checkout PR commit
+      uses: actions/checkout@v2
+      with:
+        ref: ref: ${{ inputs.pr_sha }}
 
-      - name: Run fta-cli against the PR
-        id: pr
-        run: ts-node ./src/prRun.ts
+    - name: Run fta-cli against the PR
+      id: pr
+      run: ts-node ./src/prRun.ts
 
-      - name: Comment on the PR
-        run: ts-node ./src/comment.ts
+    - name: Comment on the PR
+      run: ts-node ./src/comment.ts
