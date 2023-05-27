@@ -38,7 +38,7 @@ runs:
       shell: bash
       run: |
         ls -l
-        ts-node ${{ github.action_path }}/src/baseRun.ts
+        GITHUB_TOKEN=${{ inputs.github_token }} ts-node ${{ github.action_path }}/src/baseRun.ts
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
 
