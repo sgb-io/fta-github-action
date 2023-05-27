@@ -73,11 +73,17 @@ function diffOutput(baseOutput: string, prOutput: string): string {
 
 (async () => {
   const diffTable = diffOutput(baseOutput, prOutput);
+  const commentContent = `**FTA Results:**\n\n${diffTable}`;
+
+  console.log("========");
+  console.log(commentContent);
+  console.log("========");
+
   await octokit.rest.issues.createComment({
     issue_number: github.context.issue.number,
     owner: github.context.repo.owner,
     repo: github.context.repo.repo,
-    body: `**FTA Results:**\n\n${diffTable}`,
+    body: commentContent,
   });
   process.exit(0);
 })().catch((error) => {
