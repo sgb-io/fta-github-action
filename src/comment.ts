@@ -85,8 +85,8 @@ function diffOutput(base: string, pr: string): string {
         } ${numLinesEmoji} | ${baseReport.fta_score.toFixed(
           2
         )} => ${prReport.fta_score.toFixed(2)} ${ftaDiffEmoji} | _${
-          baseReport.assessment
-        }_ => _${prReport.assessment}_ ${assessmentEmoji}\n`;
+          prReport.assessment
+        }_ ${assessmentEmoji}\n`;
       }
     }
   });
