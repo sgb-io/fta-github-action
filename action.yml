@@ -26,6 +26,7 @@ runs:
     - name: Install dependencies
       shell: bash
       run: |
+        cd ${{ github.action_path }}
         npm install -g yarn
         npm install -g ts-node
         yarn
@@ -33,7 +34,7 @@ runs:
     - name: Run fta-cli against the base
       shell: bash
       run: |
-        cd ${{ github.action_path }}
+        ls -l
         ts-node baseRun.ts
 
     - name: Checkout PR commit
