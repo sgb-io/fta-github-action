@@ -9,6 +9,9 @@ inputs:
   pr_sha:
     description: "Sha of the PR"
     required: true
+  github_token:
+    description: "Github Token"
+    required: true
 
 runs:
   using: 'composite'
@@ -37,7 +40,7 @@ runs:
         ls -l
         ts-node ${{ github.action_path }}/src/baseRun.ts
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
 
     - name: Checkout PR commit
       uses: actions/checkout@v2
