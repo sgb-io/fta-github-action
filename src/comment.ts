@@ -2,7 +2,7 @@ import * as github from "@actions/github";
 import Table from "cli-table3";
 import dotenv from "dotenv";
 
-const [baseOutput, prOutput] = process.argv.slice(2);
+// const [baseOutput, prOutput] = process.argv.slice(2);
 
 interface FileReport {
   file_name: string;
@@ -11,11 +11,16 @@ interface FileReport {
   assessment: string;
 }
 
-dotenv.config();
+const outputFile = process.env["GITHUB_ENV"] as string;
 
-console.log("Github_Token was", process.env.GITHUB_TOKEN);
+console.log("outputFile content", outputFile);
+
+dotenv.config();
+dotenv.parse(outputFile);
 
 const octokit = github.getOctokit(process.env.GITHUB_TOKEN as string);
+const baseOutput = process.env.baseResult;
+const prOutput = process.env.prResult;
 
 function diffOutput(baseOutput: string, prOutput: string): string {
   console.log("===== baseOutput ====");
