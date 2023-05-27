@@ -34,6 +34,7 @@ runs:
     - name: Run fta-cli against the base
       shell: bash
       run: |
+        cd ${{ github.action_path }}
         ls -l
         ts-node baseRun.ts
 
