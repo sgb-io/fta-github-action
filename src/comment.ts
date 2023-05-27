@@ -28,6 +28,8 @@ function diffOutput(base: string, pr: string): string {
   const baseReports: FileReport[] = JSON.parse(base);
   const prReports: FileReport[] = JSON.parse(pr);
 
+  console.log("parsed base", baseReports);
+
   const baseReportsMap = new Map(
     baseReports.map((report) => [report.file_name, report])
   );
