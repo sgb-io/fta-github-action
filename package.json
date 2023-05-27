@@ -7,7 +7,6 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
-    "cli-table3": "^0.6.3",
     "dotenv": "^16.0.3",
     "fta-cli": "^0.1.10"
   },
