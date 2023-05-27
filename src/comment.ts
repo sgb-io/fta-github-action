@@ -1,5 +1,6 @@
 import * as github from "@actions/github";
 import Table from "cli-table3";
+import dotenv from "dotenv";
 
 const [baseOutput, prOutput] = process.argv.slice(2);
 
@@ -9,6 +10,10 @@ interface FileReport {
   fta_score: number;
   assessment: string;
 }
+
+dotenv.config();
+
+console.log("Github_Token was", process.env.GITHUB_TOKEN);
 
 const octokit = github.getOctokit(process.env.GITHUB_TOKEN as string);
 
