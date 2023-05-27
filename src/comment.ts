@@ -39,14 +39,24 @@ function diffOutput(base: string, pr: string): string {
     const baseReport = baseReportsMap.get(key);
     const prReport = prReportsMap.get(key);
 
+    let assessmentEmoji = ":sparkle:";
+    if (prReport.fta_score > 60) {
+      assessmentEmoji = ":warning:";
+    }
+    if (prReport.fta_score > 50) {
+      assessmentEmoji = ":toolbox:";
+    }
+
     if (!baseReport) {
       // Items that got introduced in the PR
       markdownTable += `| ${key} | ${
         prReport?.line_count
-      } | ${prReport?.fta_score.toFixed(2)} | ${prReport?.assessment} |  |\n`;
+      } | ${prReport?.fta_score.toFixed(2)} | ${
+        prReport?.assessment
+      } ${assessmentEmoji} |\n`;
     } else if (!prReport) {
       // Items that got removed
-      markdownTable += `| ${key} | ${baseReport.line_count} | - | N/A (Removed) |  |\n`;
+      markdownTable += `| ${key} | - | - | N/A (File Removed) |\n`;
     } else {
       // Items that existed both before and after
       if (
@@ -62,13 +72,6 @@ function diffOutput(base: string, pr: string): string {
           prReport.fta_score < baseReport.fta_score
             ? ":thumbsup:"
             : ":warning:";
-        let assessmentEmoji = ":sparkle:";
-        if (prReport.fta_score > 60) {
-          assessmentEmoji = ":warning:";
-        }
-        if (prReport.fta_score > 50) {
-          assessmentEmoji = ":toolbox:";
-        }
 
         markdownTable += `| ${key} | ${baseReport.line_count} => ${
           prReport.line_count
