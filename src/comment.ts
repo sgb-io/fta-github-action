@@ -29,7 +29,8 @@ function diffOutput(base: string, pr: string): string {
     prReports.map((report) => [report.file_name, report])
   );
 
-  let markdownTable = "| Filename | Num lines | FTA score | Assessment |\n";
+  let markdownTable =
+    "| File | Num. lines | FTA score (lower is better) | Assessment |\n";
   markdownTable += "|----------|-----------|-----------|------------|\n";
 
   const keys = new Set([...baseReportsMap.keys(), ...prReportsMap.keys()]);
