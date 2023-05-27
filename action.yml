@@ -23,20 +23,17 @@ runs:
       with:
         node-version: 18
 
-    # - name: Install dependencies
-    #   shell: bash
-    #   run: |
-    #     npm install -g yarn
-    #     npm install -g ts-node
-    #     yarn
-
-    - name: Run fta-cli against the base
+    - name: Install dependencies
       shell: bash
       run: |
         npm install -g yarn
         npm install -g ts-node
-        cd ${{ github.action_path }}
         yarn
+
+    - name: Run fta-cli against the base
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
         ts-node baseRun.ts
 
     - name: Checkout PR commit
