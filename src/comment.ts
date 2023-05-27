@@ -25,8 +25,8 @@ function diffOutput(base: string, pr: string): string {
   console.log("===== base ====");
   console.log(base);
   console.log("===== /base ====");
-  const baseReports: FileReport[] = JSON.parse(base);
-  const prReports: FileReport[] = JSON.parse(pr);
+  const baseReports: FileReport[] = JSON.parse(JSON.parse(base));
+  const prReports: FileReport[] = JSON.parse(JSON.parse(pr));
 
   console.log("parsed base", typeof baseReports, baseReports.length);
 
