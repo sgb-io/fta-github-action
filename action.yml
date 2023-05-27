@@ -34,9 +34,8 @@ runs:
     - name: Run fta-cli against the base
       shell: bash
       run: |
-        cd ${{ github.action_path }}
         ls -l
-        ts-node baseRun.ts
+        ts-node ${{ github.action_path }}/baseRun.ts
 
     - name: Checkout PR commit
       uses: actions/checkout@v2
