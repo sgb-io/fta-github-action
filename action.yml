@@ -36,9 +36,7 @@ runs:
 
     - name: Run fta-cli against the base
       shell: bash
-      run: |
-        ls -l
-        GITHUB_TOKEN=${{ inputs.github_token }} ts-node ${{ github.action_path }}/src/baseRun.ts
+      run: ts-node ${{ github.action_path }}/src/baseRun.ts
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
 
@@ -50,7 +48,11 @@ runs:
     - name: Run fta-cli against the PR
       shell: bash
       run: ts-node ${{ github.action_path }}/src/prRun.ts
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
 
     - name: Comment on the PR
       shell: bash
       run: ts-node ${{ github.action_path }}/src/comment.ts
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
