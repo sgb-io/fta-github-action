@@ -152,10 +152,10 @@ emoji-regex@^8.0.0:
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
   integrity sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==
 
-fta-cli@^0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/fta-cli/-/fta-cli-0.1.9.tgz#28211a054e5c8e38396c8c8aba342ac0d9ea0a3e"
-  integrity sha512-C4wFdY8kYxBtR2vTIdaoHUOfL6B2PrLCgPK1Hp2EqQLIxvb+CFT9yMFgu5F2l9uqk7qNUHzKbdn6Wotqe3LLsg==
+fta-cli@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/fta-cli/-/fta-cli-0.1.10.tgz#21e8af10dd6605679c0755dc16fb11c5d7e01e46"
+  integrity sha512-P6TYOUBY21stWvcTbbe+RLPOOgOUBpaLZg/+fqs+LRvAzRoRAq8dWtAG8fIjl6PM6izGcLVjIesIbd5TQCK68g==
 
 is-fullwidth-code-point@^3.0.0:
   version "3.0.0"
@@ -206,6 +206,11 @@ tunnel@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.6.tgz#72f1314b34a5b192db012324df2cc587ca47f92c"
   integrity sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==
+
+typescript@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
+  integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
 
 universal-user-agent@^6.0.0:
   version "6.0.0"

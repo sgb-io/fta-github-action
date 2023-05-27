@@ -11,6 +11,10 @@
     "fta-cli": "^0.1.10"
   },
   "devDependencies": {
-    "@types/node": "^20.2.1"
+    "@types/node": "^20.2.1",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "typecheck": "tsc"
   }
 }

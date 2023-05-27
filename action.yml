@@ -35,7 +35,7 @@ runs:
       shell: bash
       run: |
         ls -l
-        ts-node ${{ github.action_path }}/baseRun.ts
+        ts-node ${{ github.action_path }}/src/baseRun.ts
 
     - name: Checkout PR commit
       uses: actions/checkout@v2
@@ -44,8 +44,8 @@ runs:
 
     - name: Run fta-cli against the PR
       shell: bash
-      run: ts-node ${{ github.action_path }}/prRun.ts
+      run: ts-node ${{ github.action_path }}/src/prRun.ts
 
     - name: Comment on the PR
       shell: bash
-      run: ts-node ${{ github.action_path }}/comment.ts
+      run: ts-node ${{ github.action_path }}/src/comment.ts

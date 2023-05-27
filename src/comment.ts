@@ -1,5 +1,5 @@
-import * as github from "@actions/github";
-import * as Table from "cli-table3";
+import github from "@actions/github";
+import Table from "cli-table3";
 
 const [baseOutput, prOutput] = process.argv.slice(2);
 
