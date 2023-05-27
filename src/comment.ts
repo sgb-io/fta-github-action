@@ -18,6 +18,9 @@ console.log("Github_Token was", process.env.GITHUB_TOKEN);
 const octokit = github.getOctokit(process.env.GITHUB_TOKEN as string);
 
 function diffOutput(baseOutput: string, prOutput: string): string {
+  console.log("===== baseOutput ====");
+  console.log(baseOutput);
+  console.log("===== /baseOutput ====");
   const baseReports: FileReport[] = JSON.parse(baseOutput);
   const prReports: FileReport[] = JSON.parse(prOutput);
 
