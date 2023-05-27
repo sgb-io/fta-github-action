@@ -36,6 +36,8 @@ runs:
       run: |
         ls -l
         ts-node ${{ github.action_path }}/src/baseRun.ts
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Checkout PR commit
       uses: actions/checkout@v2
