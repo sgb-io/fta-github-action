@@ -1,8 +1,7 @@
+import fs from "node:fs";
 import * as github from "@actions/github";
 import Table from "cli-table3";
 import dotenv from "dotenv";
-
-// const [baseOutput, prOutput] = process.argv.slice(2);
 
 interface FileReport {
   file_name: string;
@@ -16,18 +15,18 @@ const outputFile = process.env["GITHUB_ENV"] as string;
 console.log("outputFile content", outputFile);
 
 dotenv.config();
-dotenv.parse(outputFile);
+dotenv.parse(fs.readFileSync(outputFile));
 
 const octokit = github.getOctokit(process.env.GITHUB_TOKEN as string);
 const baseOutput = process.env.baseResult;
 const prOutput = process.env.prResult;
 
-function diffOutput(baseOutput: string, prOutput: string): string {
-  console.log("===== baseOutput ====");
-  console.log(baseOutput);
-  console.log("===== /baseOutput ====");
-  const baseReports: FileReport[] = JSON.parse(baseOutput);
-  const prReports: FileReport[] = JSON.parse(prOutput);
+function diffOutput(base: string, pr: string): string {
+  console.log("===== base ====");
+  console.log(base);
+  console.log("===== /base ====");
+  const baseReports: FileReport[] = JSON.parse(base);
+  const prReports: FileReport[] = JSON.parse(pr);
 
   const baseReportsMap = new Map(
     baseReports.map((report) => [report.file_name, report])
