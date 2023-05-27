@@ -41,10 +41,12 @@ function diffOutput(base: string, pr: string): string {
 
     if (!baseReport) {
       // Items that got introduced in the PR
-      markdownTable += `| ${key} | ${prReport?.line_count} | ${prReport?.fta_score} | ${prReport?.assessment} |  |\n`;
+      markdownTable += `| ${key} | ${
+        prReport?.line_count
+      } | ${prReport?.fta_score.toFixed(2)} | ${prReport?.assessment} |  |\n`;
     } else if (!prReport) {
       // Items that got removed
-      markdownTable += `| ${key} | ${baseReport.line_count} | ${baseReport.fta_score} | ${baseReport.assessment} |  |\n`;
+      markdownTable += `| ${key} | ${baseReport.line_count} | - | N/A (Removed) |  |\n`;
     } else {
       // Items that existed both before and after
       if (
